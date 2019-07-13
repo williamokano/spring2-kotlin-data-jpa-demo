@@ -1,0 +1,22 @@
+version: '3'
+services:
+
+  postgres:
+    image: postgres:9.6-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=application
+      - POSTGRES_USER=application
+      - POSTGRES_PASSWORD=application
+      - MAX_CONNECTIONS=300
+    networks:
+      - custom
+
+networks:
+  custom:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.44.0.0/16

@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/includes/20190712215100_customer_schema.yaml
+  - include:
+      file: db/changelog/includes/20190713004631_torrent_schema.yaml

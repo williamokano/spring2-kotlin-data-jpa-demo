@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20190713004631-1
+      author: william.okano
+      comment: "Create table categories"
+      changes:
+        - createTable:
+            tableName: categories
+            columns:
+              - column:
+                  name: id
+                  type: varchar(64)
+                  autoIncrement: false
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 20190713004631-2
+      author: william.okano
+      comment: "Create table torrents"
+      changes:
+        - createTable:
+            tableName: torrents
+            columns:
+              - column:
+                  name: id
+                  type: varchar(64)
+                  autoIncrement: false
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category_id
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_torrents_categories
+                    references: categories(id)

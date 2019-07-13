@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20190712215100-1
+      author: william.okano
+      comment: "Create customer table"
+      changes:
+        - createTable:
+            tableName: customers
+            columns:
+              - column:
+                  name: id
+                  type: varchar(64)
+                  autoIncrement: false
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
