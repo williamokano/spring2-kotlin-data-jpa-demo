@@ -3,6 +3,7 @@ package dev.william.samples.kotlin.jpademo.controller
 import dev.william.samples.kotlin.jpademo.controller.representation.TorrentRepresentation
 import dev.william.samples.kotlin.jpademo.controller.representation.toRepresentation
 import dev.william.samples.kotlin.jpademo.controller.request.torrent.CreateTorrentRequest
+import dev.william.samples.kotlin.jpademo.controller.request.torrent.UpdateTorrentRequest
 import dev.william.samples.kotlin.jpademo.entity.Torrent
 import dev.william.samples.kotlin.jpademo.service.CategoryService
 import dev.william.samples.kotlin.jpademo.service.TorrentService
@@ -39,6 +40,18 @@ class TorrentController(
                 category = categoryService.findById(createTorrentRequest.categoryId)
             )
         ).toRepresentation()
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    fun update(@PathVariable id: String, @RequestBody @Valid updateTorrentRequest: UpdateTorrentRequest): TorrentRepresentation {
+        return torrentService.findById(id)
+            .copy(
+                name = updateTorrentRequest.name,
+                category = categoryService.findById(updateTorrentRequest.categoryId)
+            )
+            .let { torrentService.update(it) }
+            .toRepresentation()
     }
 
     @DeleteMapping("/{id}")

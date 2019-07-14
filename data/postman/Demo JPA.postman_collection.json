@@ -170,7 +170,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Windows 10 Pro\",\n\t\"category_id\": \"{{categoryId}}\"\n}"
+							"raw": "{\n\t\"name\": \"Metallic Live in Amsterdan\",\n\t\"category_id\": \"{{categoryId}}\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/torrents",
@@ -181,6 +181,51 @@
 							"port": "8080",
 							"path": [
 								"torrents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update torrent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ee9666b3-4dba-47ae-aa8f-98e237df579a",
+								"exec": [
+									"pm.test('response is ok', () => {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Metallica Acústico MTV\",\n\t\"category_id\": \"{{categoryId}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/torrents/{{torrentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"torrents",
+								"{{torrentId}}"
 							]
 						}
 					},
@@ -258,6 +303,10 @@
 							"script": {
 								"id": "abfd60a5-3dc1-45a0-ab0f-3514ad15d930",
 								"exec": [
+									"pm.test('response is created', () => {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
 									"const jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"categoryId\", jsonData[\"id\"]);",
 									"",
@@ -292,6 +341,51 @@
 							"port": "8080",
 							"path": [
 								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "abfd60a5-3dc1-45a0-ab0f-3514ad15d930",
+								"exec": [
+									"pm.test('response is ok', () => {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Shows\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/categories/{{categoryId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories",
+								"{{categoryId}}"
 							]
 						}
 					},
