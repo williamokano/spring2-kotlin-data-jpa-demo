@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "d2815fd9-5b80-409e-b096-dbbb7f6a8bb2",
+		"name": "Demo JPA",
+		"description": "Demo JPA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Get all customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/customers/{{customerId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"{{customerId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bafe28a5-d760-4932-9dd1-bb01def14204",
+								"exec": [
+									"const jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"customerId\", jsonData[\"id\"]);",
+									"",
+									"//// sets logged in realm",
+									"//var realm = pm.request.url.path[2];",
+									"//postman.setEnvironmentVariable(\"X_ORG_SLUG\", realm);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"William Okano\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Torrent",
+			"item": [
+				{
+					"name": "Get all torrents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/torrents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"torrents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get torrent by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/torrents/{{torrentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"torrents",
+								"{{torrentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create torrent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ee9666b3-4dba-47ae-aa8f-98e237df579a",
+								"exec": [
+									"const jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"torrentId\", jsonData[\"id\"]);",
+									"",
+									"//// sets logged in realm",
+									"//var realm = pm.request.url.path[2];",
+									"//postman.setEnvironmentVariable(\"X_ORG_SLUG\", realm);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Windows 10 Pro\",\n\t\"category_id\": \"{{categoryId}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/torrents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"torrents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete torrent by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/torrents/{{torrentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"torrents",
+								"{{torrentId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get all categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get category by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categories/{{categoryId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories",
+								"{{categoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "abfd60a5-3dc1-45a0-ab0f-3514ad15d930",
+								"exec": [
+									"const jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"categoryId\", jsonData[\"id\"]);",
+									"",
+									"//// sets logged in realm",
+									"//var realm = pm.request.url.path[2];",
+									"//postman.setEnvironmentVariable(\"X_ORG_SLUG\", realm);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Applications\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categories/{{categoryId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories",
+								"{{categoryId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
