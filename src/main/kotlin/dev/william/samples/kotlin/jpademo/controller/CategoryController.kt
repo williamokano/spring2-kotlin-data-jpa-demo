@@ -42,7 +42,7 @@ class CategoryController(val categoryService: CategoryService) {
             .toRepresentation()
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun delete(@PathVariable id: String): CategoryRepresentation {
         return categoryService.delete(id).toRepresentation()
