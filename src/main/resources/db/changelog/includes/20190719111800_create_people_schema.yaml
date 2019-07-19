@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20190719111800-1
+      author: william.okano
+      comment: "Create table people"
+      changes:
+        - createTable:
+            tableName: people
+            columns:
+              - column:
+                  name: id
+                  type: varchar(36)
+                  autoIncrement: false
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+
+        - createTable:
+            tableName: juridic_people
+            columns:
+              - column:
+                  name: id
+                  type: varchar(36)
+                  autoIncrement: false
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    foreignKeyName: fk_juridic_people_people
+                    references: people(id)
+              - column:
+                  name: cnpj
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+
+        - createTable:
+            tableName: physical_people
+            columns:
+              - column:
+                  name: id
+                  type: varchar(36)
+                  autoIncrement: false
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    foreignKeyName: fk_physical_people_people
+                    references: people(id)
+              - column:
+                  name: cpf
+                  type: varchar(64)
+                  constraints:
+                    nullable: false

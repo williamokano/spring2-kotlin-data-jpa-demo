@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changelog/includes/20190712215100_customer_schema.yaml
   - include:
       file: db/changelog/includes/20190713004631_torrent_schema.yaml
+  - include:
+      file: db/changelog/includes/20190719111800_create_people_schema.yaml
